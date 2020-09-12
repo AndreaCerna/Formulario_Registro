@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>PAGINA DE REGISTRO DE ALUMNOS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="main.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        
+        
+                
+     <!Iniciando Script para formulario->
+        
+    <script type="text/javascript">
+  $(document).ready(function() {
+//obtenemos el valor de los input
+
+$('#registrar').click(function() {
+  var carnet_estudiante = document.getElementById("carnet_estudiante").value;
+  var nombre_estudiante = document.getElementById("nombre_estudiante").value;
+  var direccion_estudiante = document.getElementById("direccion_estudiante").value;
+  var correo_estudiante = document.getElementById("correo_estudiante").value;
+  var telefono_estudiante = document.getElementById("telefono_estudiante").value;
+  var i = 1; 
+  var fila = '<tr id="row' + i + '"><td>' + carnet_estudiante + '</td><td>' + nombre_estudiante + '</td><td>' + direccion_estudiante + '</td><td>' + correo_estudiante + '</td><td>' + telefono_estudiante + '</td>'; //esto seria lo que contendria la fila
+
+  i++;
+
+  $('#mytable tr:first').after(fila);
+    $("#registrados").text(""); 
+    var nFilas = $("#mytable tr").length;
+    $("#registrados").append(nFilas - 1);
+  
+    document.getElementById("carnet_estudiante").value ="";
+    document.getElementById("nombre_estudiante").value = "";
+    document.getElementById("direccion_estudiante").value = "";
+    document.getElementById("correo_estudiante").value = "";
+    document.getElementById("telefono_estudiante").value = "";
+    document.getElementById("nombre").focus();
+  });
+$(document).on('click', '.btn_remove', function() {
+  var button_id = $(this).attr("id");
+    //cuando da click obtenemos el id del boton
+    $('#row' + button_id + '').remove(); //borra la fila
+    //limpia el para que vuelva a contar las filas de la tabla
+    $("#registrados").text("");
+    var nFilas = $("#mytable tr").length;
+    $("#registrados").append(nFilas - 1);
+  });
+});        
+  
+       </script> 
+    
+    </head>
+    <body>
+        
+        
+        
+        
+        
+    <!Registrar estudiante->
+    
+        <div class="global-container">
+	<div class="card login-form">
+	<div class="card-body">
+		<h3 class="card-title text-center">Registro estudiantes UMG 2020</h3>
+		<div class="card-text">
+			<!--
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">Incorrect username or password.</div> -->
+			<form>
+			
+				<div class="form-group">
+					<label for="Carnet">Ingrese su No. Carnet</label>
+					<input type="text" class="form-control form-control-sm" name="carnet_estudiante" id="carnet_estudiante">
+				</div>
+                                <div class="form-group">
+					<label for="Nombre">Ingrese sus Nombres y Apellidos</label>
+					<input type="text" class="form-control form-control-sm" name="nombre_estudiante" id="nombre_estudiante">
+				</div>
+                                <div class="form-group">
+					<label for="direccion">Ingrese su Dirección</label>
+					<input type="text" class="form-control form-control-sm" name="direccion_estudiante" id="direccion_estudiante">
+				</div>
+                                <div class="form-group">
+					<label for="correo">Ingrese su Correo</label>
+					<input type="email" class="form-control form-control-sm" name="correo_estudiante" id="correo_estudiante">
+				</div>
+                                <div class="form-group">
+					<label for="telefono">Ingrese su Telefono</label>
+					<input type="text" class="form-control form-control-sm" name="telefono_estudiante" id="telefono_estudiante">
+				</div>
+
+				<button type="button" id="registrar" class="btn btn-primary btn-block">Registrarse</button>
+				
+
+			</form>
+		</div>
+	</div>
+</div>
+            
+            
+
+      
+</div>
+    
+        <!Tabla de registros->
+    
+       <!TABLA PARA MOSTRAR REGISTROS ->
+<div id="registrados" class="table-title">
+</div>
+<table id="mytable" class="table-fill">
+<thead>
+<tr>
+<th class="text-left">Carnet</th>
+<th class="text-left">Nombres y Apellidos</th>
+<th class="text-left">Direccion</th>
+<th class="text-left">E-mail</th>
+<th class="text-left">Telefono</th>
+</tr>
+</thead>
+<tbody class="table-hover">
+
+</tbody>
+</table>
+            
+            
+            
+ 
+
+
+    
+</body>
+</html>
